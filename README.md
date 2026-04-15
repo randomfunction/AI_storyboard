@@ -26,18 +26,33 @@
 ## Run Locally
 
 ```bash
-# 1. Setup
 git clone https://github.com/randomfucntion/pitch_visual.git
 cd pitch_visual
 
-# 2. Add API Secrets
-# Edit .env file and add:
-# HF_API_TOKEN=your_token
-# GEMINI_API_KEY=your_key
-
-# 3. Launch via Docker
-docker build -t pitchvisual .
-docker run -p 8000:8000 --env-file .env pitchvisual
+# Create a local .env file in the root directory
+touch .env
+```
+Inside your `.env` file, supply your API keys:
+```env
+HF_API_TOKEN=your_huggingface_token_here
+GEMINI_API_KEY=your_gemini_token_here
 ```
 
-*(Alternatively, run natively: `pip install -r requirements.txt && uvicorn main:app`)*
+### Step 2. Launch (Docker)
+```bash
+# Build the optimized python slim image
+docker build -t pitchvisual .
+
+# Run the container locally
+docker run -p 8000:8000 --env-file .env pitchvisual
+```
+**Access the app at:** `http://localhost:8000`
+
+### Step 2b. Launch (Native Python)
+If you prefer not to use Docker:
+```bash
+python -m venv .darwix   # Or preferred venv name
+source .darwix/bin/activate
+pip install -r requirements.txt
+uvicorn main:app --reload
+```
