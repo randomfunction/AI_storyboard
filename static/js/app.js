@@ -21,6 +21,9 @@ const DOM = {
     themeBtn:   document.getElementById('theme-toggle'),
     iconMoon:   document.getElementById('theme-icon-moon'),
     iconSun:    document.getElementById('theme-icon-sun'),
+    archBtn:    document.getElementById('arch-btn'),
+    archModal:  document.getElementById('arch-modal'),
+    closeArch:  document.getElementById('close-arch')
 };
 
 let cachedScenes = [];
@@ -372,3 +375,35 @@ document.addEventListener('keydown', (e) => {
 // Bind handlers
 DOM.btn.addEventListener('click', handleGenerate);
 DOM.download.addEventListener('click', handleExport);
+
+// ═══════════════════════════════════════════════════════
+//  ARCHITECTURE MODAL & MERMAID INIT
+// ═══════════════════════════════════════════════════════
+let mermaidRendered = false;
+
+if (typeof mermaid !== 'undefined') {
+    mermaid.initialize({ startOnLoad: false, theme: 'base', themeVariables: { primaryColor: '#f4f4f5', primaryTextColor: '#111', lineColor: '#666' } });
+}
+
+if (DOM.archBtn) {
+    DOM.archBtn.addEventListener('click', () => {
+        DOM.archModal.style.display = 'flex';
+        // Delay slightly to let the display:flex layout calculate dimensions
+        if (typeof mermaid !== 'undefined' && !mermaidRendered) {
+            setTimeout(async () => {
+                try {
+                    await mermaid.run({ querySelector: '.mermaid' });
+                    mermaidRendered = true;
+                } catch (e) {
+                    console.error("Mermaid init error", e);
+                }
+            }, 50);
+        }
+    });
+
+    DOM.closeArch.addEventListener('click', () => DOM.archModal.style.display = 'none');
+    
+    DOM.archModal.addEventListener('click', (e) => {
+        if (e.target === DOM.archModal) DOM.archModal.style.display = 'none';
+    });
+}

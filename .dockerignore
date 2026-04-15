@@ -1,0 +1,15 @@
+.env
+.darwix/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Don't bake caches into Docker image
+static/images/*.png
+static/images/*.jpg
+static/images/*.jpeg
+
+.git/
+.DS_Store
