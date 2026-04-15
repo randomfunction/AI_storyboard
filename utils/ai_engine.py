@@ -15,7 +15,7 @@ def get_ai_clients():
         genai.configure(api_key=gemini_key)
         # Use a stable version
         try:
-            gemini_model = genai.GenerativeModel('gemini-2.5-flash')
+            gemini_model = genai.GenerativeModel('gemini-2.5-flash-lite')
         except:
             gemini_model = genai.GenerativeModel('gemini-pro')
     else:
