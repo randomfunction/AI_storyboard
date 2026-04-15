@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>🎬 The Pitch Visualizer Pro</h1>
+  <h1>Pitch Visualizer</h1>
   <p>Transform raw narrative text into professional, AI-generated visual pitch decks in seconds.</p>
 </div>
 
@@ -11,14 +11,14 @@
 
 <br>
 
-## 📝 Project Overview & Capabilities
+## Project Overview & Capabilities
 The Pitch Visualizer is a scalable, AI-powered presentation tool that programmatically ingests raw narrative text and constructs a stunning, multi-panel visual storyboard. Features include:
 - Generating distinct cinematic frames based on user-selected styles (Cyberpunk, 3D Render, etc.).
 - Auto-extracting "presenter speaking notes" for every generated scene.
 - A beautiful, real-time minimal UI utilizing Server-Sent Events (SSE) for seamless live streaming.
 - Full local PDF export capabilities.
 
-## 🧠 Advanced Prompt Engineering Methodology
+## Advanced Prompt Engineering Methodology
 This project heavily relies on a multi-stage **LLM Prompt Chain** to ensure high fidelity and stylistic consistency in Gen-AI outputs. We tackle common image-generation constraints using the following engineered approaches:
 
 ### 1. The Director/Orchestrator Agent
@@ -33,13 +33,13 @@ Raw narrative text (e.g., *"He walked into the room"*) generates mediocre imager
 - **Lighting Conditions:** (e.g., *volumetric lighting, cinematic rim light, golden hour, neon backlighting*)
 - **Render Descriptors:** (e.g., *Unreal Engine 5 render, octane render, 8k resolution, photorealistic masterpiece*)
 
-## ✨ Core Workflow Architecture
+## Core Workflow Architecture
 1. **Intelligent Segmentation:** Evaluates narrative flow to create structured JSON.
 2. **Parallel Gen-AI Rendering:** Streams generated text payloads directly to Hugging Face APIs.
 3. **Real-time SSE:** Streams panels progressively to the web UI to hide rendering latency.
 4. **MD5 Asset Caching:** Heavily mitigates HuggingFace backend queue wait-times for previously generated matching prompts by hashing local directory requests.
 
-## 📦 Setup & Execution Instructions
+## Setup & Execution Instructions
 
 ### Prerequisites
 - Docker (Recommended) or Python 3.12+
