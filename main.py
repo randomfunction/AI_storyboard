@@ -13,7 +13,7 @@ from utils.ai_engine import get_ai_clients, segment_narrative, generate_image
 
 load_dotenv()
 
-app = FastAPI(title="Pitch Visualizer Pro")
+app = FastAPI(title="Pitch Visualizer")
 os.makedirs("static/images", exist_ok=True)
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")

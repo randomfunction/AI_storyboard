@@ -1,8 +1,3 @@
-/* ═══════════════════════════════════════════════════════
-   PITCH VISUALIZER PRO — Minimal Theme (Render Style)
-   High-contrast, stark, solid colors, clean borders
-   ═══════════════════════════════════════════════════════ */
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 /* ─── Theme Tokens ─── */
@@ -13,59 +8,68 @@
 
 /* ─── Dark Mode (High Contrast) ─── */
 [data-theme="dark"] {
-    --bg-primary:    #0a0a0a;
-    --bg-secondary:  #141414;
-    --bg-elevated:   #1f1f1f;
-    --bg-card:       #0e0e0e;
-    --bg-input:      #0a0a0a;
-    
-    --border:        #2e2e2e;
-    --border-hover:  #444444;
-    
-    --text-primary:  #ededed;
-    --text-secondary:#a1a1aa;
-    --text-muted:    #666666;
-    
-    --brand-action:       #ffffff;
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #141414;
+    --bg-elevated: #1f1f1f;
+    --bg-card: #0e0e0e;
+    --bg-input: #0a0a0a;
+
+    --border: #2e2e2e;
+    --border-hover: #444444;
+
+    --text-primary: #ededed;
+    --text-secondary: #a1a1aa;
+    --text-muted: #666666;
+
+    --brand-action: #ffffff;
     --brand-action-hover: #e5e5e5;
-    --brand-action-text:  #000000;
-    
-    --skeleton-a:    #1f1f1f;
-    --skeleton-b:    #2e2e2e;
-    --shadow-card:   0 4px 20px rgba(0, 0, 0, 0.4);
-    --input-shadow:  none;
-    --ring-color:    rgba(255, 255, 255, 0.2);
+    --brand-action-text: #000000;
+
+    --skeleton-a: #1f1f1f;
+    --skeleton-b: #2e2e2e;
+    --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.4);
+    --input-shadow: none;
+    --ring-color: rgba(255, 255, 255, 0.2);
 }
 
 /* ─── Light Mode (Clean & Stark) ─── */
 [data-theme="light"] {
-    --bg-primary:    #ffffff;
-    --bg-secondary:  #f4f4f5;
-    --bg-elevated:   #ffffff;
-    --bg-card:       #ffffff;
-    --bg-input:      #ffffff;
-    
-    --border:        #e4e4e7;
-    --border-hover:  #d4d4d8;
-    
-    --text-primary:  #09090b;
-    --text-secondary:#52525b;
-    --text-muted:    #a1a1aa;
-    
-    --brand-action:       #09090b;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f4f4f5;
+    --bg-elevated: #ffffff;
+    --bg-card: #ffffff;
+    --bg-input: #ffffff;
+
+    --border: #e4e4e7;
+    --border-hover: #d4d4d8;
+
+    --text-primary: #09090b;
+    --text-secondary: #52525b;
+    --text-muted: #a1a1aa;
+
+    --brand-action: #09090b;
     --brand-action-hover: #27272a;
-    --brand-action-text:  #ffffff;
-    
-    --skeleton-a:    #f4f4f5;
-    --skeleton-b:    #e4e4e7;
-    --shadow-card:   0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0,0,0,0.02);
-    --input-shadow:  inset 0 1px 2px rgba(0,0,0,0.02);
-    --ring-color:    rgba(0, 0, 0, 0.1);
+    --brand-action-text: #ffffff;
+
+    --skeleton-a: #f4f4f5;
+    --skeleton-b: #e4e4e7;
+    --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.02);
+    --input-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.02);
+    --ring-color: rgba(0, 0, 0, 0.1);
 }
 
 /* ─── Base ─── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     font-family: var(--font);
@@ -93,8 +97,10 @@ body {
 .gradient-border {
     border: none;
 }
+
 .gradient-border::before {
-    display: none; /* remove pseudo element border */
+    display: none;
+    /* remove pseudo element border */
 }
 
 /* ─── Buttons (Solid Minimal) ─── */
@@ -108,14 +114,22 @@ body {
     padding: 0.6rem 1.2rem;
     cursor: pointer;
     transition: var(--theme-transition);
-    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
+
 .btn-primary:hover {
     background: var(--brand-action-hover);
     border-color: var(--brand-action-hover);
 }
-.btn-primary:active { transform: scale(0.98); }
-.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+.btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
 
 .btn-ghost {
     background: transparent;
@@ -128,6 +142,7 @@ body {
     cursor: pointer;
     transition: var(--theme-transition);
 }
+
 .btn-ghost:hover {
     color: var(--text-primary);
     border-color: var(--border-hover);
@@ -145,18 +160,23 @@ body {
     transition: var(--theme-transition);
     box-shadow: var(--input-shadow);
 }
+
 .input-field:focus {
     outline: none;
     border-color: var(--text-primary);
     box-shadow: 0 0 0 2px var(--ring-color);
 }
-.input-field::placeholder { color: var(--text-muted); }
+
+.input-field::placeholder {
+    color: var(--text-muted);
+}
 
 /* ─── Cards ─── */
 .scene-card {
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 8px; /* sharp aesthetic */
+    border-radius: 8px;
+    /* sharp aesthetic */
     box-shadow: var(--shadow-card);
     overflow: hidden;
     transition: var(--theme-transition);
@@ -169,13 +189,20 @@ body {
     padding: 1.5rem;
     transition: var(--theme-transition);
 }
+
 .feature-card:hover {
     border-color: var(--border-hover);
 }
 
 /* ─── Scrollbar Hide ─── */
-.no-scrollbar::-webkit-scrollbar { display: none; }
-.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
 
 /* ─── Skeleton Loading (Minimal) ─── */
 .skeleton {
@@ -185,9 +212,15 @@ body {
     border-radius: 8px;
     border: 1px solid var(--border);
 }
+
 @keyframes shimmer {
-    0%   { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
 }
 
 /* ─── Pre-loader (Minimal) ─── */
@@ -216,9 +249,19 @@ body {
     border-top-color: var(--text-primary);
     animation: spin 1s linear infinite;
 }
-.loader-icon-wrap svg, .loader-ring { display: none; } /* hide the old complex rings */
 
-@keyframes spin { 100% { transform: rotate(360deg); } }
+.loader-icon-wrap svg,
+.loader-ring {
+    display: none;
+}
+
+/* hide the old complex rings */
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
 
 /* ─── Theme Toggle (Minimal version) ─── */
 .theme-toggle {
@@ -234,6 +277,7 @@ body {
     align-items: center;
     padding: 0 2px;
 }
+
 .theme-toggle .toggle-thumb {
     width: 18px;
     height: 18px;
@@ -244,9 +288,20 @@ body {
     align-items: center;
     justify-content: center;
 }
-[data-theme="dark"] .toggle-thumb { transform: translateX(0); }
-[data-theme="light"] .toggle-thumb { transform: translateX(16px); }
-.toggle-thumb svg { display: none; } /* Minimal doesn't need the sun/moon icon */
+
+[data-theme="dark"] .toggle-thumb {
+    transform: translateX(0);
+}
+
+[data-theme="light"] .toggle-thumb {
+    transform: translateX(16px);
+}
+
+.toggle-thumb svg {
+    display: none;
+}
+
+/* Minimal doesn't need the sun/moon icon */
 
 /* ─── Scene Badge ─── */
 .scene-badge {
@@ -272,23 +327,53 @@ body {
 
 /* ─── Slide-In Animation ─── */
 @keyframes fadeSlideIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to   { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
+
 .animate-fade-slide {
     animation: fadeSlideIn 0.4s ease forwards;
 }
 
 /* ─── Utility ─── */
-.text-primary   { color: var(--text-primary); }
-.text-secondary { color: var(--text-secondary); }
-.text-muted     { color: var(--text-muted); }
-.bg-primary     { background: var(--bg-primary); }
-.bg-secondary   { background: var(--bg-secondary); }
-.bg-elevated    { background: var(--bg-elevated); }
+.text-primary {
+    color: var(--text-primary);
+}
+
+.text-secondary {
+    color: var(--text-secondary);
+}
+
+.text-muted {
+    color: var(--text-muted);
+}
+
+.bg-primary {
+    background: var(--bg-primary);
+}
+
+.bg-secondary {
+    background: var(--bg-secondary);
+}
+
+.bg-elevated {
+    background: var(--bg-elevated);
+}
 
 /* ─── Responsive ─── */
 @media (max-width: 768px) {
-    .scene-card { flex-direction: column !important; }
-    .scene-card > div:first-child { height: 240px !important; }
+    .scene-card {
+        flex-direction: column !important;
+    }
+
+    .scene-card>div:first-child {
+        height: 240px !important;
+    }
 }

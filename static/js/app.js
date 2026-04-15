@@ -1,29 +1,22 @@
-/**
- * ═══════════════════════════════════════════════════════
- *  PITCH VISUALIZER PRO — Application Logic
- *  Theme Toggle, SSE Streaming, PDF Export
- * ═══════════════════════════════════════════════════════
- */
-
 // ─── DOM References ───
 const DOM = {
-    input:      document.getElementById('narrative-input'),
-    style:      document.getElementById('style-select'),
-    btn:        document.getElementById('generate-btn'),
-    wrapper:    document.getElementById('storyboard-wrapper'),
-    container:  document.getElementById('scroll-container'),
-    next:       document.getElementById('next-btn'),
-    prev:       document.getElementById('prev-btn'),
-    download:   document.getElementById('download-btn'),
-    overlay:    document.getElementById('pdf-overlay'),
-    features:   document.getElementById('features-section'),
-    counter:    document.getElementById('scene-counter'),
-    themeBtn:   document.getElementById('theme-toggle'),
-    iconMoon:   document.getElementById('theme-icon-moon'),
-    iconSun:    document.getElementById('theme-icon-sun'),
-    archBtn:    document.getElementById('arch-btn'),
-    archModal:  document.getElementById('arch-modal'),
-    closeArch:  document.getElementById('close-arch')
+    input: document.getElementById('narrative-input'),
+    style: document.getElementById('style-select'),
+    btn: document.getElementById('generate-btn'),
+    wrapper: document.getElementById('storyboard-wrapper'),
+    container: document.getElementById('scroll-container'),
+    next: document.getElementById('next-btn'),
+    prev: document.getElementById('prev-btn'),
+    download: document.getElementById('download-btn'),
+    overlay: document.getElementById('pdf-overlay'),
+    features: document.getElementById('features-section'),
+    counter: document.getElementById('scene-counter'),
+    themeBtn: document.getElementById('theme-toggle'),
+    iconMoon: document.getElementById('theme-icon-moon'),
+    iconSun: document.getElementById('theme-icon-sun'),
+    archBtn: document.getElementById('arch-btn'),
+    archModal: document.getElementById('arch-modal'),
+    closeArch: document.getElementById('close-arch')
 };
 
 let cachedScenes = [];
@@ -368,7 +361,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Keyboard nav
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft')  DOM.prev.click();
+    if (e.key === 'ArrowLeft') DOM.prev.click();
     if (e.key === 'ArrowRight') DOM.next.click();
 });
 
@@ -377,32 +370,16 @@ DOM.btn.addEventListener('click', handleGenerate);
 DOM.download.addEventListener('click', handleExport);
 
 // ═══════════════════════════════════════════════════════
-//  ARCHITECTURE MODAL & MERMAID INIT
+//  ARCHITECTURE MODAL
 // ═══════════════════════════════════════════════════════
-let mermaidRendered = false;
-
-if (typeof mermaid !== 'undefined') {
-    mermaid.initialize({ startOnLoad: false, theme: 'base', themeVariables: { primaryColor: '#f4f4f5', primaryTextColor: '#111', lineColor: '#666' } });
-}
 
 if (DOM.archBtn) {
     DOM.archBtn.addEventListener('click', () => {
         DOM.archModal.style.display = 'flex';
-        // Delay slightly to let the display:flex layout calculate dimensions
-        if (typeof mermaid !== 'undefined' && !mermaidRendered) {
-            setTimeout(async () => {
-                try {
-                    await mermaid.run({ querySelector: '.mermaid' });
-                    mermaidRendered = true;
-                } catch (e) {
-                    console.error("Mermaid init error", e);
-                }
-            }, 50);
-        }
     });
 
     DOM.closeArch.addEventListener('click', () => DOM.archModal.style.display = 'none');
-    
+
     DOM.archModal.addEventListener('click', (e) => {
         if (e.target === DOM.archModal) DOM.archModal.style.display = 'none';
     });
