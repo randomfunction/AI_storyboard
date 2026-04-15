@@ -1,0 +1,85 @@
+/* static/css/style.css */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
+
+:root {
+    --brand: #6366f1;
+    --brand-glow: rgba(99, 102, 241, 0.4);
+    --bg: #030712;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg);
+    overflow-x: hidden;
+    color: #f3f4f6;
+}
+
+.glass {
+    background: rgba(17, 24, 39, 0.6);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.shadow-brand {
+    box-shadow: 0 0 20px -5px var(--brand-glow);
+}
+
+/* Hide scrollbar */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Custom Animations */
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.animate-slide {
+    animation: slideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Skeleton Shimmer */
+.skeleton {
+    background: linear-gradient(90deg, #111827 25%, #1f2937 50%, #111827 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Warming Up Loader */
+#warming-up-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: #030712;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 1s ease-out, visibility 1s;
+}
+
+.loader-logo {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.pulse-ring {
+    position: absolute;
+    inset: -20px;
+    border: 2px solid var(--brand);
+    border-radius: 50%;
+    animation: pulsate 2s ease-out infinite;
+}
+
+@keyframes pulsate {
+    0% { transform: scale(0.6); opacity: 0; }
+    50% { opacity: 0.5; }
+    100% { transform: scale(1.4); opacity: 0; }
+}

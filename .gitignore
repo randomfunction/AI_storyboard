@@ -1,0 +1,23 @@
+# API Keys and Secrets
+.env
+
+# Python Environment
+venv/
+.darwix/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Application Data (Caches)
+static/images/*.png
+static/images/*.jpg
+static/images/*.jpeg
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/

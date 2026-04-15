@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pitch Visualizer Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Premium Pre-loader -->
+    <div id="warming-up-overlay">
+        <div class="loader-logo">
+            <div class="pulse-ring"></div>
+            <svg class="w-20 h-20 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+        </div>
+        <h2 class="text-2xl font-bold tracking-tighter text-white">PITCH VISUALIZER <span class="text-indigo-500">PRO</span></h2>
+        <p class="text-slate-500 text-sm mt-2 animate-pulse uppercase tracking-widest">Warming up AI engine...</p>
+    </div>
+
+    <!-- Main Navigation -->
+    <header class="glass sticky top-0 z-50 py-4 px-8 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-indigo-600 rounded flex items-center justify-center font-bold text-xs shadow-brand">PV</div>
+            <span class="font-semibold text-white tracking-tight">Pitch Visualizer</span>
+        </div>
+        <button id="download-btn" class="hidden glass px-4 py-2 rounded-lg text-indigo-400 font-medium text-xs hover:bg-indigo-500/10 transition">EXPORT PDF</button>
+    </header>
+
+    <main class="flex-1 max-w-7xl mx-auto w-full px-6 py-12">
+        <!-- Hero Search Section -->
+        <section class="max-w-3xl mx-auto mb-16">
+            <div class="glass p-8 rounded-[2rem] shadow-2xl relative">
+                <div class="absolute top-0 right-10 -translate-y-1/2 w-20 h-20 bg-indigo-600/20 blur-2xl rounded-full"></div>
+                
+                <h2 class="text-sm font-bold text-indigo-500 uppercase tracking-widest mb-4">Start your narrative</h2>
+                <textarea id="narrative-input" rows="4" class="w-full bg-transparent border-none text-xl sm:text-2xl font-light text-white placeholder-slate-700 focus:ring-0 resize-none mb-6" placeholder="A world where everyone has a personal AI assistant..."></textarea>
+                
+                <div class="flex flex-col sm:flex-row gap-4 items-center border-t border-white/5 pt-6">
+                    <select id="style-select" class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-slate-300 focus:outline-none focus:ring-1 focus:ring-indigo-500">
+                        {% for style in styles %} <option value="{{style}}">{{style}}</option> {% endfor %}
+                    </select>
+                    <button id="generate-btn" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 px-8 rounded-xl shadow-brand transition active:scale-95">Generate Storyboard</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Storyboard Sections -->
+        <div id="storyboard-wrapper" class="hidden flex-col gap-8">
+            <div class="flex justify-between items-center">
+                <h3 class="text-xl font-bold flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-green-500 animate-ping"></span>
+                    Live Storyboard
+                </h3>
+                <div class="flex gap-2">
+                    <button id="prev-btn" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-white/5">←</button>
+                    <button id="next-btn" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-white/5">→</button>
+                </div>
+            </div>
+            
+            <div id="scroll-container" class="flex overflow-x-auto snap-x snap-mandatory gap-6 no-scrollbar py-4 min-h-[500px]">
+                <!-- Streamed cards go here -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Global Progress Overlay -->
+    <div id="pdf-overlay" class="fixed inset-0 bg-black/90 backdrop-blur-md z-[200] flex flex-col items-center justify-center hidden">
+        <div class="w-16 h-16 border-4 border-indigo-500/20 border-t-indigo-500 rounded-full animate-spin mb-4"></div>
+        <p class="text-indigo-400 font-bold tracking-widest uppercase text-xs">Generating High-Res PDF</p>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

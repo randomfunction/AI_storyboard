@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+jinja2
+python-dotenv
+requests
+python-multipart
+huggingface_hub
+Pillow
+google-generativeai
+gunicorn

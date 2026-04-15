@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: pitch-visualizer-pro
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn -w 1 -k uvicorn.workers.UvicornWorker main:app
+    envVars:
+      - key: HF_API_TOKEN
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: MOCK_IMAGE_GEN
+        value: "False"
+      - key: MODEL_ID
+        value: "black-forest-labs/FLUX.1-schnell"
