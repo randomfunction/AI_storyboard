@@ -1,42 +1,43 @@
-# 🎬 Pitch Visualizer Pro
+<div align="center">
+  <h1>🎬 The Pitch Visualizer Pro</h1>
+  <p>Transform raw narrative text into professional, AI-generated visual pitch decks in seconds.</p>
+</div>
 
-The Pitch Visualizer is a scalable, AI-powered service that ingests narrative text and programmatically constructs a stunning, multi-panel visual storyboard. Let your sales and creative teams generate personalized pitch decks in seconds.
+<br>
 
-## ✨ Core Features & Hackathon Requirements Met:
-- **Text Input & Narrative Segmentation:** Takes unstructured paragraph data and intelligently structures it into cohesive cinematic scenes using a dedicated LLM Director agent.
-- **Intelligent Prompt Engineering:** For every segment, the backend utilizes Google Gemini to dynamically inject visual keywords (lighting, camera angle, character features) over simply returning the sentence verbatim.
-- **Image Generation:** Assembles high-quality artwork asynchronously by streaming individual engineered prompts to Hugging Face's `FLUX.1-schnell` API.
-- **Storyboard Presentation:** Minimalist, real-time-updating web UI (via Server-Sent Events) that couples the final generated panel alongside speaker scripts.
+<div align="center">
+  <img src="Flowchart.png" alt="System Architecture Flowchart" width="450"/>
+</div>
 
-## 🚀 Bonus Objectives Addressed:
-- [x] **Visual & Character Consistency:** Enforced by appending core 'style' and 'character memory' tags to every sequential image prompt in the LLM pipeline.
-- [x] **User-Selectable Styles:** Five diverse artistic filters dynamically fed into the LLM logic layer.
-- [x] **LLM-Powered Prompt Refinement:** Employs `gemini-1.5-flash` natively to adapt raw human text into specific diffusion-model syntax.
-- [x] **Dynamic UI & Streaming:** Modern real-time UI without polling, masked by initial loading techniques.
-- [x] **PDF Export Support:** Generates a downloadable high-resolution Pitch Presentation deck entirely client-side.
+<br>
 
-## 🛠️ Tech Stack
-* **Core:** Python, FastAPI, SSE (Server-Sent Events)
-* **Frontend:** Vanilla JavaScript, Minimalist CSS design system
-* **AI Models:** Google Gemini (Director LLM Layer), FLUX.1 (Visual Generator)
-* **Packaging:** Gunicorn mapped for PaaS deployments (Render / Railway)
+## ✨ Core Workflow
+1. **Intelligent Scene Director:** Extracts themes, key moments, and speaker notes from your raw text using **Gemini 1.5 Flash**.
+2. **Parallel Gen-AI Rendering:** Converts the engineered prompts into high-res cinematic images utilizing **FLUX.1-schnell**.
+3. **Real-time Streaming Engine:** Uses **Server-Sent Events (SSE)** to stream the pitch deck live to the client UI as each individual scene completes.
+4. **Export Engine:** One-click client-side compiler to generate downloadable PDF presentations.
 
-## 📦 How to Run
+## 🚀 Key Technical Highlights for Recruiters
+- **Strict Visual & Character Consistency:** The backend explicitly enforces a persistent "Visual Memory Tag" into all diffusion prompts to guarantee artistic continuity between varying scenes.
+- **Optimized Caching Pipeline:** Implements MD5-hashed image caching based on prompt signatures to drastically reduce external API wait times and bandwidth costs.
+- **Production-Ready Dockerization:** Fully containerized with a lightweight `python:3.12-slim` image and managed via Gunicorn workers for immediate platform-as-a-Service deployments (e.g., Render, Railway).
+- **Premium SaaS UI/UX:** Responsive, minimalist light/dark design architecture featuring custom hardware-accelerated animations and an async loading layer.
 
-1. Clone repo, init environment:
+## 📦 Run Locally
+
 ```bash
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
+# 1. Setup
+git clone https://github.com/randomfucntion/pitch_visual.git
+cd pitch_visual
+
+# 2. Add API Secrets
+# Edit .env file and add:
+# HF_API_TOKEN=your_token
+# GEMINI_API_KEY=your_key
+
+# 3. Launch via Docker
+docker build -t pitchvisual .
+docker run -p 8000:8000 --env-file .env pitchvisual
 ```
 
-2. Configure Secrets in `.env`:
-```
-HF_API_TOKEN=your-hf-token
-GEMINI_API_KEY=your-gemini-key
-```
-
-3. Launch:
-```bash
-uvicorn main:app --reload
-```
+*(Alternatively, run natively: `pip install -r requirements.txt && uvicorn main:app`)*
