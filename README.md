@@ -18,6 +18,12 @@ The Pitch Visualizer is a scalable, AI-powered presentation tool that programmat
 - A beautiful, real-time minimal UI utilizing Server-Sent Events (SSE) for seamless live streaming.
 - Full local PDF export capabilities.
 
+## Key Technical Highlights
+- **Strict Visual & Character Consistency:** The backend explicitly enforces a persistent "Visual Memory Tag" into all diffusion prompts to guarantee artistic continuity between varying scenes.
+- **Optimized Caching Pipeline:** Implements MD5-hashed image caching based on prompt signatures to drastically reduce external API wait times and bandwidth costs.
+- **Production-Ready Dockerization:** Fully containerized with a lightweight `python:3.12-slim` image and managed via Gunicorn workers for immediate platform-as-a-Service deployments (e.g., Render, Railway).
+- **UI/UX:** Responsive, minimalist light/dark design architecture featuring custom hardware-accelerated animations and an async loading layer.
+
 ## Advanced Prompt Engineering Methodology
 This project heavily relies on a multi-stage **LLM Prompt Chain** to ensure high fidelity and stylistic consistency in Gen-AI outputs. We tackle common image-generation constraints using the following engineered approaches:
 
