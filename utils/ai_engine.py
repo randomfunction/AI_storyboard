@@ -38,14 +38,19 @@ def segment_narrative(narrative, style, model):
         return scenes
     
     prompt = f"""
-    You are an elite Film Director and Master Prompt Engineer.
-    Analyze this narrative: "{narrative}"
-    Apply this style: "{style}"
-    Break this into 3-8 visual scenes. Return a JSON array ONLY.
-    Each object must have:
-    - "scene_title": Punchy title.
-    - "enhanced_prompt": Detailed visual prompt for FLUX.1.
-    - "speaker_notes": Clear script for the presenter.
+    You are an elite Film Director and AI Prompt Engineer.
+    Your task is to adapt this narrative into a visual storyboard: "{narrative}"
+    Requested Visual Style: "{style}"
+
+    CRITICAL INSTRUCTION (VISUAL CONSISTENCY):
+    To maintain visual consistency across all generated images, you MUST establish a core descriptive 'style tag' and (if applicable) a 'character description tag' that is explicitly appended to every single `enhanced_prompt`.
+    Example: If the story is about a boy named Leo, append "(A 10-year-old boy with messy brown hair and a red jacket)" to every scene he is in. Always append the style tag.
+
+    Break this down into 3 to 6 logical scenes. Return a JSON array ONLY.
+    Each object must exactly have these keys:
+    - "scene_title": A punchy, short title.
+    - "enhanced_prompt": A highly detailed, visually imaginative prompt for the FLUX.1 image AI. Include framing, lighting, elements, subject descriptions, and the consistent style keywords.
+    - "speaker_notes": A short script/talking point for the presenter.
     """
     try:
         response = model.generate_content(prompt)
