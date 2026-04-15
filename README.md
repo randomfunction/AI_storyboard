@@ -63,6 +63,7 @@ Inside your `.env` file, supply your API keys:
 HF_API_TOKEN=your_huggingface_token_here
 GEMINI_API_KEY=your_gemini_token_here
 MODEL_ID=black-forest-labs/FLUX.1-schnell
+MOCK_IMAGE_GEN=False
 ```
 
 ### Step 2. Launch (Docker)
