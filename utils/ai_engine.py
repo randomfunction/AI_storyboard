@@ -38,18 +38,26 @@ def segment_narrative(narrative, style, model):
         return scenes
     
     prompt = f"""
-    You are an elite Film Director and AI Prompt Engineer.
+    You are an elite Film Director and AI Image Generation Expert.
     Your task is to adapt this narrative into a visual storyboard: "{narrative}"
     Requested Visual Style: "{style}"
 
-    CRITICAL INSTRUCTION (VISUAL CONSISTENCY):
-    To maintain visual consistency across all generated images, you MUST establish a core descriptive 'style tag' and (if applicable) a 'character description tag' that is explicitly appended to every single `enhanced_prompt`.
-    Example: If the story is about a boy named Leo, append "(A 10-year-old boy with messy brown hair and a red jacket)" to every scene he is in. Always append the style tag.
+    CRITICAL INSTRUCTION 1: VISUAL & CHARACTER CONSISTENCY
+    To maintain visual consistency across all generated images, you MUST establish:
+    1. A 'Core Style Tag' (e.g., hyper-realistic 8k, octane render, vivid colors)
+    2. A 'Character Memory Tag' for main subjects (e.g., A 30-year-old woman with short curly black hair wearing a red trenchcoat).
+    You MUST explicitly prepend these exact tags to every single `enhanced_prompt` you write.
+
+    CRITICAL INSTRUCTION 2: DIFFUSION MODEL PROMPT ENGINEERING
+    Do not just write generic descriptions. Structure your `enhanced_prompt` with advanced cinematography jargon:
+    - Specify Focal Lengths (e.g., 35mm lens, macro shot, extreme wide angle).
+    - Specify Lighting (e.g., volumetric lighting, cinematic rim lighting, neon backlighting).
+    - Specify Composition (e.g., rule of thirds, low angle, dynamic action pose).
 
     Break this down into 3 to 6 logical scenes. Return a JSON array ONLY.
     Each object must exactly have these keys:
     - "scene_title": A punchy, short title.
-    - "enhanced_prompt": A highly detailed, visually imaginative prompt for the FLUX.1 image AI. Include framing, lighting, elements, subject descriptions, and the consistent style keywords.
+    - "enhanced_prompt": The fully engineered, highly detailed diffusion prompt (including your consistency tags and cinematography jargon).
     - "speaker_notes": A short script/talking point for the presenter.
     """
     try:
